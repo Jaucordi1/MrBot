@@ -5,7 +5,10 @@
     "outDir": "dist",
     "target": "es6",
     "strict": true,
-    "downlevelIteration": true
+    "downlevelIteration": true,
+    "typeRoots": [
+      "./types/"
+    ]
   },
   "include": [
     "src/**/*"
