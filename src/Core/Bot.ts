@@ -1,6 +1,7 @@
 import Command from './Command'
 import {Config} from '../../types'
 import Ping from '../Commands/Ping'
+import Help from '../Commands/Help'
 import Discord, {Client, Message} from 'discord.js'
 
 export default class Bot {
@@ -23,6 +24,7 @@ export default class Bot {
 	// INITALISATION
 	private init() {
 		this.initCommands()
+
 		this.client.on('ready', this.greetings.bind(this))
 		this.client.on('message', this.onMessage.bind(this))
 
@@ -34,16 +36,21 @@ export default class Bot {
 
 	// EVENTS
 	private onMessage(message: Message) {
+		// Avoid parsing bots
+		if (message.author === null || message.author.bot) return
+
+		// Message is command
 		if (message.content.startsWith('!') && message.content.length > 1) return this.onCommand(message)
 
 		// Do other things if you want
 	}
 	private onCommand(message: Message) {
+		// Getting Command[]
 		const commands = [...Command.list.values()]
+		// Searching for matching command
 		const cmd = commands.find(cmd => cmd.parse(message))
-		if (cmd !== undefined) return
-
-		return message.reply("J'ai pas compris, tu parles de quoi ?")
+		// No commands match
+		if (cmd === undefined) return message.reply("J'ai pas compris, tu parles de quoi ?")
 	}
 
 	// ACTIONS
