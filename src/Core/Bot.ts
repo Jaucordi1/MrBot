@@ -2,6 +2,7 @@ import Command from './Command'
 import {Config} from '../../types'
 import Ping from '../Commands/Ping'
 import Help from '../Commands/Help'
+import Info from '../Commands/Info'
 import Discord, {Client, Message} from 'discord.js'
 
 export default class Bot {
@@ -33,6 +34,7 @@ export default class Bot {
 	private initCommands() {
 		new Ping(this)
 		new Help(this)
+		new Info(this)
 	}
 
 	// EVENTS
