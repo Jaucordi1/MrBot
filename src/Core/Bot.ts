@@ -32,6 +32,7 @@ export default class Bot {
 	}
 	private initCommands() {
 		new Ping(this)
+		new Help(this)
 	}
 
 	// EVENTS
