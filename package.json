@@ -31,7 +31,7 @@
     "ffmpeg": "^0.0.4",
     "moment": "^2.24.0",
     "node-opus": "^0.3.2",
-    "ytdl-core-discord": "github:amishshah/ytdl-core-discord",
+    "ytdl-core": "^0.29.2",
     "zucc": "^0.1.2"
   }
 }
