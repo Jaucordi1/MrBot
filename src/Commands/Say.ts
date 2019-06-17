@@ -8,10 +8,14 @@ export default class Say extends Command {
 	}
 
 	match(message: Message): boolean {
-		return message.content.startsWith('!say ')
+		return message.content.startsWith('!say ') || message.content.startsWith('!everyone ')
 	}
 
 	action(message: Message): Promise<string | string[] | null> {
-		return Promise.resolve(this.getArgs(message).join(' '))
+		const msg = this.getArgs(message).join(' ')
+		if (this.getAliasUsed(message) !== 'everyone')
+			return Promise.resolve(msg)
+
+		return message.channel.send(`@everyone ${msg}`).then(() => null)
 	}
 }
