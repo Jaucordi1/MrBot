@@ -18,23 +18,31 @@ export default class Command {
 		Command.list.set(name, this)
 	}
 
+	// GETTERS
 	get isDelCmdRequired(): boolean {
 		return this.removeCommand
 	}
 	get isDelResRequired(): boolean {
 		return this.removeAnswer
 	}
+
+	// SETTERS
 	set delResTimeout(timeout: number | undefined) {
 		this.removeAnswer = timeout !== undefined
 		this.removeAnswerAfter = timeout || this.removeAnswerAfter
 	}
-	protected static getAliasUsed(message: Message): string {
+	// STATIC
+	static getAliasUsed(message: Message): string {
 		const idx = message.content.indexOf(' ')
 		if (idx > -1)
 			return message.content.substring(1, idx)
 		else
 			return message.content.substring(1)
 	}
+	match(message: Message): boolean {
+		return false
+	}
+	// ACTIONS
 	parse(message: Message): boolean {
 		if (this.match(message)) {
 			const executor = new CommandExecutor(this)
@@ -42,15 +50,17 @@ export default class Command {
 		}
 		return false
 	}
-	match(message: Message): boolean {
-		return false
-	}
-	action(message?: Message): Promise<string | string[] | null> {
+	action(message: Message): Promise<string | string[] | null> {
 		return Promise.reject('Not implemented !')
 	}
+	// PROTECTED
 	protected getArgs(message: Message): string[] {
 		if (message.content === `!${this.name}`) return []
-		const str = message.content.substring(this.name.length + 2)
-		return str.split(' ')
+		const str = message.content.substring(this.getAliasUsed(message).length + 2)
+		return str.split(' ').filter((s, i) => i !== 0 || s !== '')
+	}
+	protected getAliasUsed(message: Message): string {
+		const idx = message.content.indexOf(' ')
+		return message.content.substring(1, idx > -1 ? idx : message.content.length)
 	}
 }
