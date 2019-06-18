@@ -1,4 +1,6 @@
 import Bot from './Core/Bot'
 
 const config = require('../config.json')
-new Bot(config)
+const bot = new Bot(config)
+
+process.on('beforeExit', bot.quit)
