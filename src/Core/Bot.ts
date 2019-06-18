@@ -96,6 +96,12 @@ export default class Bot {
 		// Message is command
 		if (message.content.startsWith('!') && message.content.length > 1) return this.onCommand(message)
 
+		// React to @ mention of bot
+		if (message.mentions.has(this._client.user!)) return this.onMention(message)
+
+		// React to mention of bot's name
+		if (message.content.toLocaleLowerCase().search('mrbot') > -1) return this.onFalseMention(message)
+
 		// Do other things if you want
 	}
 	private onCommand(message: Message) {
