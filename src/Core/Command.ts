@@ -63,4 +63,12 @@ export default class Command {
 		const idx = message.content.indexOf(' ')
 		return message.content.substring(1, idx > -1 ? idx : message.content.length)
 	}
+	protected split(message: Message): { alias: string, args: string[] } {
+		const alias = this.getAliasUsed(message)
+		const args = message.content.substring(alias.length + 2).split(' ').filter((s, i) => i !== 0 || s !== '')
+		return {
+			alias: alias,
+			args: args
+		}
+	}
 }
