@@ -12,7 +12,8 @@ export default class CommandExecutor {
 	}
 
 	execute(from: TextChannel | DMChannel, message: Message): boolean {
-		this.cmd.action(message).then(res => {
+		this.cmd.action(message)
+		  .then(res => {
 			if (res !== null) {
 				from.send(res, {code: true}).then(response => {
 					if (this.cmd.isDelCmdRequired) {
@@ -45,6 +46,7 @@ export default class CommandExecutor {
 				}
 			}
 		})
+		  .catch(o_O => console.error("Command failed with error:", o_O))
 		return true
 	}
 }
