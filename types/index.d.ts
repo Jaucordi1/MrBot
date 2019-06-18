@@ -1,10 +1,11 @@
 // Sounds
 export type JSONSoundSource = {
-	type: string,
+	type: 'youtube' | 'local',
 	url: string
 }
 export type JSONSound = {
-	name: string,
+	shortcut?: string,
+	title: string,
 	source: JSONSoundSource,
 	volume?: number
 }
@@ -13,6 +14,7 @@ export type JSONSound = {
 export type Config = {
 	name: string,
 	token: string,
+	yt_token: string,
 	sounds: JSONSound[],
 	humors: {
 		good: string[],
