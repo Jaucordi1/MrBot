@@ -9,9 +9,38 @@ ___
 *MrBot* est un bot qui s'apparente à un **trolleur professionnel**, ne dites pas que vous n'étiez pas prévenus x)
 
 ### 2. *Commandes*
-Le préfixe des commandes est **!** (point d'exclamation), vous devrez faire précéder le nom de la commande de ce préfixe.
+Le préfixe des commandes est **!** *(point d'exclamation)*, vous **devrez** *faire précéder le nom de la commande de ce préfixe*.
 
 Voici la liste des commandes actuellement fonctionnelles
-- *ping*
-- *help*
-- *info*
+- **!info**
+- **!help**
+- **!ping**
+
+
+- **!tts \<message\>**
+- **!say \<message\>**
+- **!everyone \<message\>**
+
+
+- **!soundbox help**
+- **!soundbox list**
+
+### SoundBox
+*MrBot* possède une **SoundBox** qui lui permet de sauvegarder des vidéos YouTube qu'il pourra venir jouer dans votre salon lorsque vous le souhaitez !
+
+Pour ce faire, rien de plus simple, commencez par ajouter un son à la SoundBox, vous aurez besoin de 2 choses:
+1. Un nom unique pour votre son, sans espaces (tirets (-) et underscores (_) autorisés)
+2. Le lien d'une vidéo YouTube
+
+Une fois que vous êtes munis de ces 2 informations, envoyez la commande suivante: 
+(N'oubliez pas de remplacer <nom_du_son> par le nom que vous avez choisis et <lien_youtube> par le lien de la vidéo que vous voulez enregistrer)
+
+**!<nom_du_son> <lien_youtube>**
+
+Une fois chose faite, vous pouvez demander à *MrBot* de venir jouer votre son lorsque vous êtes dans un channel vocal en envoyant la commande suivante:
+
+**!<nom_du_son>**
+
+Si vous souhaitez retirer un son de la SoundBox, vous pouvez le faire en ajoutant 'remove', comme ceci: 
+
+**!<nom_du_son> remove**
