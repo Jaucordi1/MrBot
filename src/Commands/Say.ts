@@ -8,14 +8,24 @@ export default class Say extends Command {
 	}
 
 	match(message: Message): boolean {
-		return message.content.startsWith('!say ') || message.content.startsWith('!everyone ')
+		return message.content.startsWith('!say ') || message.content.startsWith('!everyone ') || message.content.startsWith('!tts ')
 	}
 
-	action(message: Message): Promise<string | string[] | null> {
-		const msg = this.getArgs(message).join(' ')
-		if (this.getAliasUsed(message) !== 'everyone')
-			return Promise.resolve(msg)
+	async action(message: Message): Promise<string | string[] | null> {
+		const {alias, args} = this.split(message)
 
-		return message.channel.send(`@everyone ${msg}`).then(() => null)
+		switch (alias) {
+			case 'say':
+				return args.join(' ')
+			case 'tts':
+				return message.channel.send(args.join(' '), {tts: true})
+				  .catch(o_O => console.error("Can't send tts message because:", o_O))
+				  .then(() => null)
+			case 'everyone':
+				return message.channel.send(`@everyone ${args.join(' ')}`)
+				  .then(() => null)
+		}
+
+		return "WTF ! o_O"
 	}
 }
