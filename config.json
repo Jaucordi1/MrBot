@@ -1,0 +1,20 @@
+{
+  "name": "MrBot",
+  "token": "DISCORD_BOT_TOKEN",
+  "yt_token": "YOUTUBE_DATA_API_TOKEN",
+  "sounds": [],
+  "humors": {
+    "good": [
+      "Apex Legends",
+      "Dofus",
+      "Minecraft",
+      "StarCraft 2",
+      "Overwatch",
+      "World Of Warcraft"
+    ],
+    "bad": [
+      "se tripoter",
+      "Carmageddon"
+    ]
+  }
+}
