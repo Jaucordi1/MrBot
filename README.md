@@ -1,16 +1,36 @@
 ### MrBot
 ###### Il vous fera péter les plombs à coup sûr !
 ___
-# Sommaire
-1. **Présentation**
-1. **Commandes**
 
-### 1. *Présentation*
+### *Présentation*
 *MrBot* est un bot qui s'apparente à un **trolleur professionnel**, ne dites pas que vous n'étiez pas prévenus x)
 
-### 2. *Commandes*
-Le préfixe des commandes est **!** *(point d'exclamation)*, vous **devrez** *faire précéder le nom de la commande de ce préfixe*.
+Ce projet est destiné aux **développeurs** qui souhaitent construire leur propre bot Discord.  
+C'est une base pour vous aider ou découvrir les librairies utilisées.  
+**Ce projet a été conçu en TypeScript !**
 
+### Installation & configuration
+*MrBot* se veut être simple dans son utilisation, autant de votre côté, en tant que DEV, que du côté de vos utilisateurs.
+
+Pour ajouter *MrBot* à votre projet npm:
+~~~~
+npm install --save mr-bot
+~~~~
+
+Avant de lancer le bot, assurez vous d'avoir remplacé:
+- **DISCORD_BOT_TOKEN** par le token de votre bot discord
+- **YOUTUBE_DATA_API_TOKEN** par le token de votre application Youtube Data Api
+
+Pour lancer le bot: 
+~~~~typescript
+import Bot from 'mr-bot'
+
+const config = require('../path/to/config.json')
+new Bot(config)
+~~~~
+
+### *Commandes*
+Le préfixe des commandes est **!** *(point d'exclamation)*, vous **devrez** *faire précéder le nom de la commande de ce préfixe*.  
 Voici la liste des commandes actuellement fonctionnelles
 - **!info**
 - **!help**
